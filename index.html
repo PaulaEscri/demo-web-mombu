@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="MOMBÚ Brunch & Burger — Smash burgers, brunch y café de especialidad en Torrellano, Elche. Ven a disfrutar de una experiencia única." />
+  <title>MOMBÚ Brunch & Burger · Torrellano, Elche</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* ── Reset ── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ── Tokens ── */
+    :root {
+      --cream: #FAF6F0;
+      --beige: #F2EAE0;
+      --sand: #E8DDD0;
+      --terra: #C4704A;
+      --terra-dk: #A85830;
+      --brown: #5C3D2E;
+      --dark: #2A1A10;
+      --muted: #9A8070;
+      --white: #FFFFFF;
+      --border: rgba(92, 61, 46, 0.12);
+      --sh-sm: 0 2px 12px rgba(42, 26, 16, 0.08);
+      --sh-md: 0 8px 32px rgba(42, 26, 16, 0.12);
+      --sh-lg: 0 20px 60px rgba(42, 26, 16, 0.18);
+      --r-sm: 10px;
+      --r-md: 18px;
+      --r-lg: 28px;
+      --ease: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ── Base ── */
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .display {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+    }
+
+    .heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    /* ── Layout helpers ── */
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .sec {
+      padding: 72px 20px;
+    }
+
+    .sec-sm {
+      padding: 56px 20px;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: var(--ease);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--terra);
+      color: var(--white);
+      box-shadow: 0 4px 20px rgba(196, 112, 74, .35);
+    }
+
+    .btn-primary:hover {
+      background: var(--terra-dk);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196, 112, 74, .45);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255, 255, 255, .65);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, .12);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--terra);
+      border: 2px solid var(--terra);
+    }
+
+    .btn-outline:hover {
+      background: var(--terra);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn-dark {
+      background: var(--brown);
+      color: var(--white);
+    }
+
+    .btn-dark:hover {
+      background: var(--dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--terra);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .18);
+    }
+
+    .btn-white:hover {
+      background: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    /* ── Section header ── */
+    .sh {
+      margin-bottom: 48px;
+    }
+
+    .sh.center {
+      text-align: center;
+    }
+
+    .sh.center .sh-sub {
+      margin: 0 auto;
+    }
+
+    .sh-tag {
+      color: var(--terra);
+      margin-bottom: 10px;
+    }
+
+    .sh-title {
+      font-size: clamp(1.9rem, 5vw, 2.9rem);
+      color: var(--dark);
+      margin-bottom: 14px;
+    }
+
+    .sh-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       NAVBAR
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      background: rgba(250, 246, 240, .9);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow var(--ease);
+    }
+
+    #nav.scrolled {
+      box-shadow: 0 4px 24px rgba(42, 26, 16, .1);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo-wrap {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: var(--brown);
+      letter-spacing: .04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: .87rem;
+      font-weight: 500;
+      color: var(--brown);
+      position: relative;
+      transition: color var(--ease);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--terra);
+      border-radius: 2px;
+      transition: width var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--terra);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a.nav-cta {
+      background: var(--terra);
+      color: var(--white);
+      padding: 7px 18px;
+      border-radius: 100px;
+      font-weight: 600;
+    }
+
+    .nav-links a.nav-cta::after {
+      display: none;
+    }
+
+    .nav-links a.nav-cta:hover {
+      background: var(--terra-dk);
+      color: var(--white);
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--brown);
+      border-radius: 2px;
+      transition: var(--ease);
+    }
+
+    #nav-mob {
+      display: none;
+      position: fixed;
+      top: 62px;
+      left: 0;
+      right: 0;
+      z-index: 998;
+      background: rgba(250, 246, 240, .97);
+      backdrop-filter: blur(18px);
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    #nav-mob.open {
+      display: flex;
+    }
+
+    #nav-mob a {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--brown);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       HERO
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px 64px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(160deg, rgba(18, 8, 2, .68) 0%, rgba(42, 26, 16, .56) 55%, rgba(92, 61, 46, .42) 100%);
+    }
+
+    .hero-body {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 5px 16px;
+      margin-bottom: 20px;
+      background: rgba(196, 112, 74, .22);
+      border: 1px solid rgba(196, 112, 74, .45);
+      border-radius: 100px;
+      color: #F4C4A4;
+      font-size: .76rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-title {
+      font-size: clamp(5rem, 18vw, 9rem);
+      color: var(--white);
+      margin-bottom: 14px;
+      text-shadow: 0 4px 40px rgba(0, 0, 0, .28);
+    }
+
+    .hero-sub {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      color: rgba(255, 255, 255, .88);
+      margin-bottom: 14px;
+    }
+
+    .hero-desc {
+      font-size: .97rem;
+      color: rgba(255, 255, 255, .7);
+      max-width: 420px;
+      margin: 0 auto 36px;
+      line-height: 1.75;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 26px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255, 255, 255, .45);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 34px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, .5), transparent);
+      animation: spulse 2s infinite;
+    }
+
+    @keyframes spulse {
+
+      0%,
+      100% {
+        opacity: .5;
+        transform: scaleY(1)
+      }
+
+      50% {
+        opacity: 1;
+        transform: scaleY(1.15)
+      }
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FEATURED DAILY MENU
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #menu-dia {
+      background: var(--cream);
+      padding: 60px 20px;
+    }
+
+    .feat-card {
+      max-width: 860px;
+      margin: 0 auto;
+      background: linear-gradient(130deg, var(--brown) 0%, #3A2015 100%);
+      border-radius: var(--r-lg);
+      padding: 52px 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      box-shadow: var(--sh-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feat-card::before {
+      content: '';
+      position: absolute;
+      top: -70px;
+      right: -70px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(196, 112, 74, .13);
+    }
+
+    .feat-card::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: -50px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .04);
+    }
+
+    .feat-left {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feat-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      margin-bottom: 14px;
+      background: rgba(196, 112, 74, .28);
+      border: 1px solid rgba(196, 112, 74, .4);
+      border-radius: 100px;
+      color: #F0B89A;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .feat-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .feat-price {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 900;
+      color: var(--terra);
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+
+    .feat-desc {
+      color: rgba(255, 255, 255, .62);
+      font-size: .9rem;
+      margin-bottom: 28px;
+    }
+
+    .feat-note {
+      color: rgba(255, 255, 255, .4);
+      font-size: .8rem;
+    }
+
+    .feat-right {
+      position: relative;
+      z-index: 1;
+      font-size: 5rem;
+      line-height: 1;
+      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, .28));
+      flex-shrink: 0;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       LO MÁS PEDIDO
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #top3 {
+      background: var(--beige);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--r-md);
+      overflow: hidden;
+      box-shadow: var(--sh-sm);
+      display: flex;
+      flex-direction: column;
+      transition: var(--ease);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sh-md);
+    }
+
+    .card-img {
+      height: 220px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .card-img img {
+      transition: transform .6s ease;
+    }
+
+    .card:hover .card-img img {
+      transform: scale(1.06);
+    }
+
+    .card-body {
+      padding: 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-cat {
+      color: var(--terra);
+      margin-bottom: 5px;
+    }
+
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 7px;
+    }
+
+    .card-desc {
+      font-size: .87rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .card-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.38rem;
+      font-weight: 700;
+      color: var(--terra);
+    }
+
+    .card-badge {
+      background: var(--beige);
+      color: var(--brown);
+      font-size: .7rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 100px;
+      letter-spacing: .07em;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       GALLERY
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #galeria {
+      background: var(--cream);
+    }
+
+    .gal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .gal-item {
+      border-radius: var(--r-md);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gal-item:first-child {
+      grid-column: 1/3;
+      height: 300px;
+    }
+
+    .gal-item:not(:first-child) {
+      height: 190px;
+    }
+
+    .gal-item img {
+      transition: transform .6s ease;
+    }
+
+    .gal-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gal-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(42, 26, 16, .3) 0%, transparent 60%);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       QR
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #qr {
+      background: var(--beige);
+      padding: 72px 20px;
+    }
+
+    .qr-inner {
+      max-width: 740px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: var(--r-lg);
+      padding: 44px 48px;
+      box-shadow: var(--sh-md);
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .qr-box {
+      flex-shrink: 0;
+      width: 108px;
+      height: 108px;
+      background: var(--beige);
+      border: 3px dashed var(--sand);
+      border-radius: var(--r-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .qr-box::before {
+      content: '';
+      position: absolute;
+      top: 7px;
+      left: 7px;
+      width: 20px;
+      height: 20px;
+      border: 3px solid var(--terra);
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .qr-box::after {
+      content: '';
+      position: absolute;
+      bottom: 7px;
+      right: 7px;
+      width: 20px;
+      height: 20px;
+      border: 3px solid var(--terra);
+      border-left: none;
+      border-top: none;
+    }
+
+    .qr-dots {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+      width: 52px;
+      height: 52px;
+    }
+
+    .qr-dots span {
+      background: var(--brown);
+      border-radius: 1px;
+      opacity: .65;
+    }
+
+    .qr-dots span:nth-child(even) {
+      opacity: .25;
+    }
+
+
+    .qr-tag {
+      color: var(--terra);
+      margin-bottom: 8px;
+    }
+
+    .qr-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .qr-desc {
+      color: var(--muted);
+      font-size: .93rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       HOURS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #horario {
+      background: var(--cream);
+    }
+
+    .hours-wrap {
+      max-width: 540px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: var(--sh-md);
+    }
+
+    .hours-hdr {
+      background: linear-gradient(130deg, var(--brown), #3A2015);
+      padding: 28px 32px;
+      text-align: center;
+    }
+
+    .hours-hdr-tag {
+      color: rgba(240, 180, 150, .75);
+      margin-bottom: 5px;
+    }
+
+    .hours-hdr-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .hours-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 32px;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--ease);
+    }
+
+    .hours-row:last-child {
+      border-bottom: none;
+    }
+
+    .hours-row:hover {
+      background: var(--cream);
+    }
+
+    .hours-row.today {
+      background: rgba(196, 112, 74, .06);
+    }
+
+    .hours-day {
+      font-weight: 500;
+      color: var(--dark);
+      font-size: .94rem;
+    }
+
+    .hours-time {
+      font-weight: 600;
+      color: var(--terra);
+      font-size: .9rem;
+    }
+
+    .hours-time.closed {
+      color: var(--muted);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       UBICACIÓN
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #ubicacion {
+      background: var(--beige);
+    }
+
+    .loc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .map-box {
+      height: 290px;
+      border-radius: var(--r-md);
+      overflow: hidden;
+      box-shadow: var(--sh-sm);
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .loc-addr {
+      font-size: 1.12rem;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .loc-city {
+      color: var(--muted);
+      font-size: .88rem;
+      margin-bottom: 28px;
+    }
+
+    .loc-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CTA
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #cta {
+      background: linear-gradient(135deg, var(--terra) 0%, var(--terra-dk) 100%);
+      padding: 96px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      left: -80px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .06);
+      pointer-events: none;
+    }
+
+    #cta::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .05);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .cta-badge {
+      display: inline-block;
+      padding: 5px 14px;
+      margin-bottom: 18px;
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 100px;
+      color: rgba(255, 255, 255, .88);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .cta-title {
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+
+    .cta-desc {
+      color: rgba(255, 255, 255, .75);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 38px;
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-cta-sec {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255, 255, 255, .58);
+    }
+
+    .btn-cta-sec:hover {
+      background: rgba(255, 255, 255, .12);
+      transform: translateY(-2px);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FOOTER
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    footer {
+      background: var(--dark);
+      padding: 48px 24px 32px;
+      text-align: center;
+    }
+
+    .ft-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 14px;
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .ft-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 5px;
+      letter-spacing: .04em;
+    }
+
+    .ft-sub {
+      color: var(--muted);
+      font-size: .83rem;
+      margin-bottom: 22px;
+    }
+
+    .ft-hr {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      margin: 0 0 14px;
+    }
+
+    .ft-copy {
+      color: rgba(255, 255, 255, .22);
+      font-size: .76rem;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       RESPONSIVE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    @media (max-width:768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .feat-card {
+        flex-direction: column;
+        padding: 36px 28px;
+        text-align: center;
+      }
+
+      .feat-right {
+        text-align: center;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .qr-inner {
+        flex-direction: column;
+        padding: 36px 28px;
+        gap: 24px;
+        text-align: center;
+      }
+
+      .loc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .loc-btns {
+        flex-direction: column;
+      }
+
+      .hours-row {
+        padding: 14px 24px;
+      }
+
+      .sec {
+        padding: 56px 20px;
+      }
+
+      .sec-sm {
+        padding: 44px 20px;
+      }
+    }
+
+    @media (min-width:769px) {
+      .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width:1024px) {
+      .gal-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 240px 240px;
+      }
+
+      .gal-item:first-child {
+        grid-column: 1/3;
+        grid-row: 1/3;
+        height: 100%;
+      }
+
+      .gal-item:not(:first-child) {
+        height: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav id="nav">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo-wrap"><img src="fotos/logo.webp" alt="Logo MOMBÚ" loading="eager" /></div>
+      <span class="nav-name">MOMBÚ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="carta.html" class="nav-cta">Carta</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#horario">Horario</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+    </ul>
+    <button class="nav-toggle" id="navBtn" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div id="nav-mob">
+    <a href="index.html" onclick="closeMob()">Inicio</a>
+    <a href="carta.html" onclick="closeMob()">Carta</a>
+    <a href="#galeria" onclick="closeMob()">Galería</a>
+    <a href="#horario" onclick="closeMob()">Horario</a>
+    <a href="#ubicacion" onclick="closeMob()">Ubicación</a>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero">
+    <div class="hero-bg"><img src="fotos/hamburguesa3.webp" alt="Smash burger MOMBÚ" loading="eager"
+        fetchpriority="high" /></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-body">
+      <span class="hero-badge">✦ Torrellano · Elche · Alicante</span>
+      <h1 class="display hero-title">MOMBÚ</h1>
+      <p class="hero-sub">Brunch &amp; Burgers en Torrellano</p>
+      <p class="hero-desc">Smash burgers, brunch y café de especialidad en un espacio acogedor y con estilo.</p>
+      <div class="hero-btns">
+        <a href="carta.html" class="btn btn-primary">🍔 Ver carta completa</a>
+        <a href="#ubicacion" class="btn btn-ghost">📍 Cómo llegar</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══ MENÚ DE MEDIODÍA ═══ -->
+  <section id="menu-dia">
+    <div class="feat-card">
+      <div class="feat-left">
+        <span class="feat-tag">✦ Oferta especial</span>
+        <h2 class="feat-title">Menú de mediodía</h2>
+        <p class="feat-price">14,90<span style="font-size:1.5rem">€</span></p>
+        <p class="feat-desc">Burger + patatas + bebida incluidos.</p>
+        <p class="feat-note">Disponible entre semana al mediodía.</p>
+        <a href="carta.html" class="btn btn-primary" style="margin-top:26px;">Ver carta completa</a>
+      </div>
+      <div class="feat-right">🍔</div>
+    </div>
+  </section>
+
+  <!-- ═══ LO MÁS PEDIDO ═══ -->
+  <section id="top3" class="sec">
+    <div class="wrap">
+      <div class="sh center">
+        <p class="label sh-tag">✦ Lo más pedido</p>
+        <h2 class="heading sh-title">Nuestros favoritos</h2>
+        <p class="sh-sub">Elaborados con ingredientes frescos y mucho amor por el detalle.</p>
+      </div>
+      <div class="cards-grid">
+
+        <article class="card">
+          <div class="card-img"><img src="fotos/burgerrosa.webp" alt="Mombu Vibes burger" loading="lazy" /></div>
+          <div class="card-body">
+            <p class="label card-cat">🍔 Smash Burger</p>
+            <h3 class="card-name">Mombu Vibes</h3>
+            <p class="card-desc">Doble smash, smoked cheddar, bacon, cebolla caramelizada y salsa pink.</p>
+            <div class="card-foot">
+              <span class="card-price">13,50€</span>
+              <span class="card-badge">Top</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img"><img src="fotos/bebida2.webp" alt="French Toast Pistacho" loading="lazy" /></div>
+          <div class="card-body">
+            <p class="label card-cat">🥞 Brunch</p>
+            <h3 class="card-name">French Toast Pistacho</h3>
+            <p class="card-desc">Mascarpone de vainilla, crema de pistacho, crujiente de pistacho y frambuesa.</p>
+            <div class="card-foot">
+              <span class="card-price">6,90€</span>
+              <span class="card-badge">Brunch</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img"><img src="fotos/acai.webp" alt="Açai Bowl" loading="lazy" /></div>
+          <div class="card-body">
+            <p class="label card-cat">🥣 Bowl</p>
+            <h3 class="card-name">Açai Bowl</h3>
+            <p class="card-desc">Crema de cacahuete, granola artesanal y fruta de temporada.</p>
+            <div class="card-foot">
+              <span class="card-price">7,90€</span>
+              <span class="card-badge">Healthy</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+      <div style="text-align:center; margin-top:44px;">
+        <a href="carta.html" class="btn btn-outline">Ver carta completa →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GALERÍA ═══ -->
+  <section id="galeria" class="sec" style="background:var(--beige);">
+    <div class="wrap">
+      <div class="sh center">
+        <p class="label sh-tag">✦ Nuestro espacio</p>
+        <h2 class="heading sh-title">Galería</h2>
+        <p class="sh-sub">Un lugar pensado para disfrutar con calma, sabor y estilo.</p>
+      </div>
+      <div class="gal-grid">
+        <div class="gal-item"><img src="fotos/hamburguesa3.webp" alt="Smash burger MOMBÚ" loading="lazy" /></div>
+        <div class="gal-item"><img src="fotos/local1.webp" alt="Interior MOMBÚ" loading="lazy" /></div>
+        <div class="gal-item"><img src="fotos/bebida1.webp" alt="Bebida MOMBÚ" loading="lazy" /></div>
+        <div class="gal-item"><img src="fotos/hamburguesa2.webp" alt="BBQ burger MOMBÚ" loading="lazy" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ QR ═══ -->
+  <section id="qr">
+    <div class="qr-inner">
+      <div class="qr-box" aria-label="QR code placeholder">
+        <div class="qr-dots">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="qr-text">
+        <p class="label qr-tag">✦ Acceso rápido</p>
+        <h2 class="heading qr-title">Menú digital</h2>
+        <p class="qr-desc">Escanea el QR o consulta la carta online cómodamente.</p>
+        <a href="carta.html" class="btn btn-primary">Ver carta completa →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HORARIO ═══ -->
+  <section id="horario" class="sec">
+    <div class="wrap">
+      <div class="sh center" style="margin-bottom:40px;">
+        <p class="label sh-tag">✦ Cuándo encontrarnos</p>
+        <h2 class="heading sh-title">Horario</h2>
+      </div>
+      <div class="hours-wrap">
+        <div class="hours-hdr">
+          <p class="label hours-hdr-tag">Horario de apertura</p>
+          <p class="hours-hdr-title">☕ MOMBÚ Brunch &amp; Burger</p>
+        </div>
+        <div>
+          <div class="hours-row" data-day="Lunes"> <span class="hours-day">Lunes</span> <span class="hours-time">8:30 –
+              20:30</span></div>
+          <div class="hours-row" data-day="Martes"> <span class="hours-day">Martes</span> <span
+              class="hours-time closed">Cerrado</span></div>
+          <div class="hours-row" data-day="Miércoles"><span class="hours-day">Miércoles</span> <span
+              class="hours-time">8:30 – 20:30</span></div>
+          <div class="hours-row" data-day="Jueves"> <span class="hours-day">Jueves</span> <span class="hours-time">8:30
+              – 20:30</span></div>
+          <div class="hours-row" data-day="Viernes"> <span class="hours-day">Viernes</span> <span
+              class="hours-time">8:30 – 23:00</span></div>
+          <div class="hours-row" data-day="Sábado"> <span class="hours-day">Sábado</span> <span class="hours-time">8:30
+              – 23:00</span></div>
+          <div class="hours-row" data-day="Domingo"> <span class="hours-day">Domingo</span> <span
+              class="hours-time">8:30 – 23:00</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ UBICACIÓN ═══ -->
+  <section id="ubicacion" class="sec" style="background:var(--beige);">
+    <div class="wrap">
+      <div class="sh center" style="margin-bottom:48px;">
+        <p class="label sh-tag">✦ Encuéntranos</p>
+        <h2 class="heading sh-title">Ubicación</h2>
+      </div>
+      <div class="loc-grid">
+        <div class="map-box">
+          <iframe title="Mapa MOMBÚ"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.1!2d-0.7012!3d38.2468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAv.+Illice+102%2C+Torrellano%2C+Elche!5e0!3m2!1ses!2ses!4v1"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div>
+          <p class="label sh-tag" style="margin-bottom:12px;">📍 Dirección</p>
+          <p class="loc-addr">Av. Illice 102,<br />Torrellano, Elche</p>
+          <p class="loc-city">Alicante, España</p>
+          <div class="loc-btns">
+            <a href="https://www.google.com/maps/search/Av.+Illice+102+Torrellano+Elche" target="_blank" rel="noopener"
+              class="btn btn-primary">🗺️ Abrir en Google Maps</a>
+            <a href="tel:+34000000000" class="btn btn-outline">📞 Llamar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section id="cta">
+    <div class="cta-inner">
+      <span class="cta-badge">✦ Te esperamos</span>
+      <h2 class="display cta-title">¿Te vienes a probarlo?</h2>
+      <p class="cta-desc">Descubre una propuesta de brunch y burgers pensada para disfrutar con calma, sabor y estilo.
+      </p>
+      <div class="cta-btns">
+        <a href="https://wa.me/34000000000" target="_blank" rel="noopener" class="btn btn-white">💬 Reservar /
+          WhatsApp</a>
+        <a href="tel:+34000000000" class="btn btn-cta-sec">📞 Llamar ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="ft-logo"><img src="fotos/logo.webp" alt="Logo MOMBÚ" loading="lazy" /></div>
+    <p class="ft-brand">MOMBÚ Brunch &amp; Burger</p>
+    <p class="ft-sub">Torrellano, Elche · Brunch &amp; Burgers</p>
+    <hr class="ft-hr" />
+    <p class="ft-copy">&copy; 2025 MOMBÚ Brunch &amp; Burger · Todos los derechos reservados</p>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('navBtn');
+    const mob = document.getElementById('nav-mob');
+    btn.addEventListener('click', () => {
+      const open = mob.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+    function closeMob() { mob.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+    document.addEventListener('click', e => {
+      if (!btn.contains(e.target) && !mob.contains(e.target)) closeMob();
+    });
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', scrollY > 20);
+    }, { passive: true });
+    // highlight today
+    const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+    const today = days[new Date().getDay()];
+    document.querySelectorAll('.hours-row').forEach(r => {
+      if (r.dataset.day === today) r.classList.add('today');
+    });
+  </script>
+</body>
+
+</html>

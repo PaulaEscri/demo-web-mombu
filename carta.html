@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Carta completa de MOMBÚ Brunch & Burger — Burgers, brunch, bowls, tostas, bebidas y más en Torrellano, Elche." />
+  <title>Carta · MOMBÚ Brunch & Burger</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    img  { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a    { text-decoration: none; color: inherit; }
+    ul   { list-style: none; }
+
+    /* ── Tokens (same as index) ── */
+    :root {
+      --cream:    #FAF6F0;
+      --beige:    #F2EAE0;
+      --sand:     #E8DDD0;
+      --terra:    #C4704A;
+      --terra-dk: #A85830;
+      --brown:    #5C3D2E;
+      --dark:     #2A1A10;
+      --muted:    #9A8070;
+      --white:    #FFFFFF;
+      --border:   rgba(92,61,46,0.12);
+      --sh-sm:    0 2px 12px rgba(42,26,16,0.08);
+      --sh-md:    0 8px 32px rgba(42,26,16,0.12);
+      --r-sm: 10px; --r-md: 18px; --r-lg: 28px;
+      --ease: 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ── Base ── */
+    body { font-family:'Inter',sans-serif; background:var(--cream); color:var(--dark); line-height:1.6; overflow-x:hidden; }
+    .display { font-family:'Playfair Display',serif; font-weight:900; line-height:1.06; letter-spacing:-.02em; }
+    .heading  { font-family:'Playfair Display',serif; font-weight:700; line-height:1.2; }
+    .label    { font-size:.72rem; font-weight:600; letter-spacing:.13em; text-transform:uppercase; }
+    .wrap     { max-width:1000px; margin:0 auto; padding:0 20px; }
+
+    /* ── Buttons ── */
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border-radius:100px; font-family:'Inter',sans-serif; font-size:.88rem; font-weight:600; border:none; cursor:pointer; transition:var(--ease); white-space:nowrap; }
+    .btn-primary { background:var(--terra); color:var(--white); box-shadow:0 4px 20px rgba(196,112,74,.35); }
+    .btn-primary:hover { background:var(--terra-dk); transform:translateY(-2px); }
+    .btn-outline { background:transparent; color:var(--terra); border:2px solid var(--terra); }
+    .btn-outline:hover { background:var(--terra); color:var(--white); transform:translateY(-2px); }
+    .btn-ghost  { background:transparent; color:var(--white); border:2px solid rgba(255,255,255,.65); }
+    .btn-ghost:hover { background:rgba(255,255,255,.12); transform:translateY(-2px); }
+    .btn-white { background:var(--white); color:var(--terra); box-shadow:0 4px 20px rgba(0,0,0,.18); }
+    .btn-white:hover { background:var(--cream); transform:translateY(-2px); }
+    .btn-cta-sec { background:transparent; color:var(--white); border:2px solid rgba(255,255,255,.58); }
+    .btn-cta-sec:hover { background:rgba(255,255,255,.12); transform:translateY(-2px); }
+
+    /* ━━━━━━━━━━━━━━━━━━
+       NAVBAR (same)
+    ━━━━━━━━━━━━━━━━━━ */
+    #nav {
+      position:fixed; top:0; left:0; right:0; z-index:999;
+      height:62px; display:flex; align-items:center; justify-content:space-between;
+      padding:0 28px;
+      background:rgba(250,246,240,.92); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--border); transition:box-shadow var(--ease);
+    }
+    #nav.scrolled { box-shadow: 0 4px 24px rgba(42,26,16,.1); }
+    .nav-brand { display:flex; align-items:center; gap:10px; }
+    .nav-logo-wrap { width:36px; height:36px; border-radius:50%; overflow:hidden; flex-shrink:0; }
+    .nav-name  { font-family:'Playfair Display',serif; font-weight:900; font-size:1.25rem; color:var(--brown); letter-spacing:.04em; }
+    .nav-links { display:flex; gap:26px; align-items:center; }
+    .nav-links a { font-size:.87rem; font-weight:500; color:var(--brown); position:relative; transition:color var(--ease); }
+    .nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:2px; background:var(--terra); border-radius:2px; transition:width var(--ease); }
+    .nav-links a:hover { color:var(--terra); }
+    .nav-links a:hover::after { width:100%; }
+    .nav-links a.active { color:var(--terra); font-weight:600; }
+    .nav-links a.active::after { width:100%; }
+    .nav-links a.nav-cta { background:var(--terra); color:var(--white); padding:7px 18px; border-radius:100px; font-weight:600; }
+    .nav-links a.nav-cta::after { display:none; }
+    .nav-links a.nav-cta:hover { background:var(--terra-dk); color:var(--white); }
+    .nav-toggle { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
+    .nav-toggle span { display:block; width:24px; height:2px; background:var(--brown); border-radius:2px; }
+    #nav-mob { display:none; position:fixed; top:62px; left:0; right:0; z-index:998; background:rgba(250,246,240,.97); backdrop-filter:blur(18px); padding:20px 28px; border-bottom:1px solid var(--border); flex-direction:column; gap:16px; }
+    #nav-mob.open { display:flex; }
+    #nav-mob a { font-size:1.05rem; font-weight:500; color:var(--brown); padding:10px 0; border-bottom:1px solid var(--border); }
+
+    /* ━━━━━━━━━━━━━━━━━━
+       PAGE HEADER
+    ━━━━━━━━━━━━━━━━━━ */
+    .page-hdr {
+      padding: 120px 24px 64px;
+      background: linear-gradient(160deg, var(--brown) 0%, #3A2015 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hdr::before {
+      content:''; position:absolute; top:-80px; right:-80px; width:320px; height:320px;
+      border-radius:50%; background:rgba(196,112,74,.12); pointer-events:none;
+    }
+    .page-hdr::after {
+      content:''; position:absolute; bottom:-60px; left:-60px; width:220px; height:220px;
+      border-radius:50%; background:rgba(255,255,255,.04); pointer-events:none;
+    }
+    .page-hdr-inner { position:relative; z-index:1; max-width:600px; margin:0 auto; }
+    .page-hdr-tag  { color:rgba(240,180,150,.75); margin-bottom:12px; }
+    .page-hdr-title { font-size:clamp(3rem,10vw,5.5rem); color:var(--white); margin-bottom:14px; }
+    .page-hdr-sub  { color:rgba(255,255,255,.65); font-size:1.05rem; line-height:1.7; }
+
+    /* ━━━━━━━━━━━━━━━━━━
+       CATEGORY NAV
+    ━━━━━━━━━━━━━━━━━━ */
+    #cat-nav {
+      position:sticky; top:62px; z-index:100;
+      background:rgba(250,246,240,.95); backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+      padding:0;
+    }
+    .cat-nav-inner {
+      display:flex; align-items:center; gap:0;
+      overflow-x:auto; -webkit-overflow-scrolling:touch;
+      scrollbar-width:none; padding:0 20px;
+    }
+    .cat-nav-inner::-webkit-scrollbar { display:none; }
+    .cat-nav-inner a {
+      flex-shrink:0; display:inline-block;
+      padding:16px 18px;
+      font-size:.8rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--muted); border-bottom:2px solid transparent;
+      transition:color var(--ease), border-color var(--ease);
+      white-space:nowrap;
+    }
+    .cat-nav-inner a:hover { color:var(--terra); border-bottom-color:var(--terra); }
+    .cat-nav-inner a.active { color:var(--terra); border-bottom-color:var(--terra); }
+
+    /* ━━━━━━━━━━━━━━━━━━
+       MENU SECTIONS
+    ━━━━━━━━━━━━━━━━━━ */
+    .menu-section { padding:64px 0; border-bottom:1px solid var(--border); }
+    .menu-section:last-of-type { border-bottom:none; }
+    .menu-section-inner { max-width:1000px; margin:0 auto; padding:0 20px; }
+
+    /* Section header */
+    .ms-hdr {
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:20px; margin-bottom:40px; flex-wrap:wrap;
+    }
+
+    .ms-tag   { color:var(--terra); margin-bottom:6px; }
+    .ms-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.4rem); font-weight:700; color:var(--dark); }
+    .ms-img   {
+      width:160px; height:100px; border-radius:var(--r-md); overflow:hidden;
+      box-shadow:var(--sh-sm); flex-shrink:0;
+    }
+
+    /* Item list */
+    .menu-items { display:flex; flex-direction:column; gap:0; }
+    .menu-item {
+      display:flex; align-items:baseline; justify-content:space-between;
+      gap:16px; padding:18px 0; border-bottom:1px solid var(--border);
+      transition:background var(--ease);
+    }
+    .menu-item:last-child { border-bottom:none; }
+    .mi-left { flex:1; }
+    .mi-name {
+      font-family:'Playfair Display',serif; font-size:1.08rem; font-weight:700; color:var(--dark);
+      margin-bottom:4px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+    }
+    .mi-badge {
+      font-family:'Inter',sans-serif; font-size:.65rem; font-weight:700;
+      padding:2px 8px; border-radius:100px; letter-spacing:.09em; text-transform:uppercase;
+    }
+    .mb-premium { background:linear-gradient(135deg,var(--terra),var(--terra-dk)); color:var(--white); }
+    .mb-new     { background:var(--beige); color:var(--brown); }
+    .mb-vegan   { background:#E8F4E8; color:#3A6B2E; }
+    .mi-desc    { font-size:.87rem; color:var(--muted); line-height:1.6; max-width:540px; }
+    .mi-price   { font-family:'Playfair Display',serif; font-size:1.12rem; font-weight:700; color:var(--terra); flex-shrink:0; white-space:nowrap; }
+
+    /* Extras / notes block */
+    .menu-note {
+      margin-top:20px; padding:16px 20px;
+      background:var(--beige); border-radius:var(--r-sm); border-left:3px solid var(--terra);
+    }
+    .menu-note p { font-size:.85rem; color:var(--muted); line-height:1.6; }
+    .menu-note p + p { margin-top:4px; }
+    .menu-note strong { color:var(--brown); }
+
+    /* Extras table */
+    .extras-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:8px 24px; margin-top:8px; }
+    .extra-row   { display:flex; justify-content:space-between; font-size:.84rem; color:var(--muted); padding:5px 0; border-bottom:1px dashed rgba(92,61,46,.1); }
+    .extra-name  { color:var(--dark); }
+    .extra-price { font-weight:600; color:var(--terra); }
+
+    /* Drinks grid */
+    .drinks-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:0; }
+    .drink-item {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0; border-bottom:1px solid var(--border);
+      gap:12px;
+    }
+    .drink-name  { font-size:.92rem; font-weight:500; color:var(--dark); }
+    .drink-price { font-weight:700; color:var(--terra); font-size:.9rem; flex-shrink:0; }
+
+    /* ━━━━━━━━━━━━━━━━━━
+       BACKGROUND ALTERNATION
+    ━━━━━━━━━━━━━━━━━━ */
+    .ms-bg-white { background:var(--white); }
+    .ms-bg-beige { background:var(--beige); }
+    .ms-bg-cream { background:var(--cream); }
+
+    /* ━━━━━━━━━━━━━━━━━━
+       CTA BOTTOM
+    ━━━━━━━━━━━━━━━━━━ */
+    #cta {
+      background:linear-gradient(135deg,var(--terra) 0%,var(--terra-dk) 100%);
+      padding:88px 20px; text-align:center; position:relative; overflow:hidden;
+    }
+    #cta::before { content:''; position:absolute; top:-80px; left:-80px; width:300px; height:300px; border-radius:50%; background:rgba(255,255,255,.06); pointer-events:none; }
+    #cta::after  { content:''; position:absolute; bottom:-60px; right:-60px; width:220px; height:220px; border-radius:50%; background:rgba(255,255,255,.05); pointer-events:none; }
+    .cta-inner { position:relative; z-index:1; max-width:600px; margin:0 auto; }
+    .cta-badge { display:inline-block; padding:5px 14px; margin-bottom:16px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22); border-radius:100px; color:rgba(255,255,255,.88); font-size:.7rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; }
+    .cta-title { font-size:clamp(2rem,6vw,3.2rem); color:var(--white); margin-bottom:16px; }
+    .cta-desc  { color:rgba(255,255,255,.75); font-size:1rem; line-height:1.75; margin-bottom:36px; }
+    .cta-btns  { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+    /* ━━━━━━━━━━━━━━━━━━
+       FOOTER
+    ━━━━━━━━━━━━━━━━━━ */
+    footer { background:var(--dark); padding:48px 24px 32px; text-align:center; }
+    .ft-logo  { width:50px; height:50px; border-radius:50%; overflow:hidden; margin:0 auto 14px; background:rgba(255,255,255,.08); }
+    .ft-brand { font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:900; color:var(--white); margin-bottom:5px; letter-spacing:.04em; }
+    .ft-sub   { color:var(--muted); font-size:.83rem; margin-bottom:22px; }
+    .ft-hr    { border:none; border-top:1px solid rgba(255,255,255,.08); margin:0 0 14px; }
+    .ft-copy  { color:rgba(255,255,255,.22); font-size:.76rem; }
+
+    /* ━━━━━━━━━━━━━━━━━━
+       RESPONSIVE
+    ━━━━━━━━━━━━━━━━━━ */
+    @media (max-width:768px) {
+      .nav-links  { display:none; }
+      .nav-toggle { display:flex; }
+      .ms-hdr     { flex-direction:column; }
+      .ms-img     { width:100%; height:180px; }
+      .drinks-grid { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:480px) {
+      .drinks-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo-wrap"><img src="fotos/logo.webp" alt="Logo MOMBÚ" loading="eager" /></div>
+    <span class="nav-name">MOMBÚ</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="carta.html" class="nav-cta active">Carta</a></li>
+    <li><a href="index.html#galeria">Galería</a></li>
+    <li><a href="index.html#horario">Horario</a></li>
+    <li><a href="index.html#ubicacion">Ubicación</a></li>
+  </ul>
+  <button class="nav-toggle" id="navBtn" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div id="nav-mob">
+  <a href="index.html"          onclick="closeMob()">Inicio</a>
+  <a href="carta.html"          onclick="closeMob()">Carta</a>
+  <a href="index.html#galeria"  onclick="closeMob()">Galería</a>
+  <a href="index.html#horario"  onclick="closeMob()">Horario</a>
+  <a href="index.html#ubicacion" onclick="closeMob()">Ubicación</a>
+</div>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-hdr">
+  <div class="page-hdr-inner">
+    <p class="label page-hdr-tag">✦ MOMBÚ Brunch &amp; Burger</p>
+    <h1 class="display page-hdr-title">Carta</h1>
+    <p class="page-hdr-sub">Todo lo que puedes disfrutar en MOMBÚ</p>
+  </div>
+</header>
+
+<!-- ═══ CATEGORY NAV ═══ -->
+<div id="cat-nav">
+  <div class="cat-nav-inner">
+    <a href="#burgers">Burgers</a>
+    <a href="#tostas">Tostas</a>
+    <a href="#brioche">Brioche</a>
+    <a href="#bowls">Bowls</a>
+    <a href="#pancakes">Pancakes &amp; Gofres</a>
+    <a href="#ensaladas">Ensaladas</a>
+    <a href="#entrantes">Entrantes</a>
+    <a href="#postres">Postres</a>
+    <a href="#bebidas">Bebidas</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     BURGERS
+═══════════════════════════════════ -->
+<div id="burgers" class="menu-section ms-bg-cream">
+  <div class="menu-section-inner">
+    <div class="ms-hdr">
+      <div class="ms-hdr-left">
+        <p class="label ms-tag">🍔 Smash Burgers</p>
+        <h2 class="ms-title">Burgers</h2>
+      </div>
+      <div class="ms-img">
+        <img src="fotos/hambruguesa1.webp" alt="Burger MOMBÚ" loading="lazy" />
+      </div>
+    </div>
+    <div class="menu-items">
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">Cheeseburger Kids</p>
+          <p class="mi-desc">Carne y queso cheddar</p>
+        </div>
+        <span class="mi-price">7,90€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">Mombu Vibes <span class="mi-badge mb-new">Top</span></p>
+          <p class="mi-desc">Doble smash, smoked cheddar, bacon, cebolla caramelizada, salsa pink y cebollino</p>
+        </div>
+        <span class="mi-price">13,50€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">BBQ Dream</p>
+          <p class="mi-desc">Doble smash, queso cheddar, aros de cebolla, salsa BBQ y pulled pork</p>
+        </div>
+        <span class="mi-price">13,90€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">La Trufada</p>
+          <p class="mi-desc">Doble smash, cheddar, cebolla caramelizada, bacon y salsa de trufa</p>
+        </div>
+        <span class="mi-price">13,50€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">Sweet Bacon <span class="mi-badge mb-premium">Premium</span></p>
+          <p class="mi-desc">Medallón de 180 g, mermelada de bacon, doble queso smoked, pepinillo, salsa Mombú y crujiente de bacon</p>
+        </div>
+        <span class="mi-price">14,50€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">La Crunchy</p>
+          <p class="mi-desc">Pollo crunchy, tomate, lechuga y mayonesa</p>
+        </div>
+        <span class="mi-price">10,90€</span>
+      </div>
+
+    </div>
+    <div class="menu-note" style="margin-top:24px;">
+      <p>✓ Opción <strong>vegana</strong> disponible en todas las hamburguesas</p>
+      <p>✓ Opción <strong>sin gluten</strong> disponible — consulta con el equipo</p>
+      <p>✓ <strong>Extras de ingredientes</strong> disponibles</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     TOSTAS
+═══════════════════════════════════ -->
+<div id="tostas" class="menu-section ms-bg-beige">
+  <div class="menu-section-inner">
+    <div class="ms-hdr">
+      <div class="ms-hdr-left">
+        <p class="label ms-tag">🍞 Pan artesano</p>
+        <h2 class="ms-title">Tostas</h2>
+      </div>
+    </div>
+    <div class="menu-items">
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">La Favorita</p>
+          <p class="mi-desc">Bacon, queso camembert, polvo de nuez y miel</p>
+        </div>
+        <span class="mi-price">6,90€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">Trendy <span class="mi-badge mb-vegan">Vegana</span></p>
+          <p class="mi-desc">Hummus de remolacha, aguacate cortado y virutas de queso</p>
+        </div>
+        <span class="mi-price">6,90€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">Suprema de Salmón</p>
+          <p class="mi-desc">Salmón, queso crema, aguacate, huevo poche, eneldo y semillas</p>
+        </div>
+        <span class="mi-price">8,50€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">Ibérica</p>
+          <p class="mi-desc">Tomate, jamón ibérico y parmesano rallado</p>
+        </div>
+        <span class="mi-price">6,50€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">Cucurucú</p>
+          <p class="mi-desc">Revuelto, queso crema, crujiente de jamón ibérico y germinado de ajo</p>
+        </div>
+        <span class="mi-price">6,50€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">La Burratina <span class="mi-badge mb-premium">Premium</span></p>
+          <p class="mi-desc">Miel, burrata, crujiente de pistacho, tomate seco, trufa, rúcula y mortadela</p>
+        </div>
+        <span class="mi-price">9,50€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">El Holandés Revuelto <span class="mi-badge mb-new">Cruasán</span></p>
+          <p class="mi-desc">Bacon, queso, rúcula, revuelto y salsa holandesa</p>
+        </div>
+        <span class="mi-price">6,50€</span>
+      </div>
+
+    </div>
+
+    <div class="menu-note" style="margin-top:28px;">
+      <p style="font-weight:600; color:var(--brown); margin-bottom:12px; font-size:.9rem;">Extras de ingredientes</p>
+      <div class="extras-grid">
+        <div class="extra-row"><span class="extra-name">Pan de masa madre</span><span class="extra-price">1,80€</span></div>
+        <div class="extra-row"><span class="extra-name">Jamón serrano</span><span class="extra-price">1,60€</span></div>
+        <div class="extra-row"><span class="extra-name">Revuelto</span><span class="extra-price">1,90€</span></div>
+        <div class="extra-row"><span class="extra-name">Salmón</span><span class="extra-price">3,00€</span></div>
+        <div class="extra-row"><span class="extra-name">Queso</span><span class="extra-price">1,40€</span></div>
+        <div class="extra-row"><span class="extra-name">Pollo</span><span class="extra-price">2,20€</span></div>
+        <div class="extra-row"><span class="extra-name">Aguacate</span><span class="extra-price">1,80€</span></div>
+        <div class="extra-row"><span class="extra-name">Queso crema</span><span class="extra-price">1,30€</span></div>
+        <div class="extra-row"><span class="extra-name">Bacon</span><span class="extra-price">2,00€</span></div>
+        <div class="extra-row"><span class="extra-name">Tomate</span><span class="extra-price">1,20€</span></div>
+        <div class="extra-row"><span class="extra-name">York</span><span class="extra-price">1,40€</span></div>
+        <div class="extra-row"><span class="extra-name">Mermelada</span><span class="extra-price">0,80€</span></div>
+        <div class="extra-row"><span class="extra-name">Mantequilla</span><span class="extra-price">0,80€</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     BRIOCHE
+═══════════════════════════════════ -->
+<div id="brioche" class="menu-section ms-bg-cream">
+  <div class="menu-section-inner">
+    <div class="ms-hdr">
+      <div class="ms-hdr-left">
+        <p class="label ms-tag">🥚 Huevos &amp; brunch</p>
+        <h2 class="ms-title">Brioche</h2>
+      </div>
+    </div>
+    <div class="menu-items">
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">Bendito Mombú — Bacon</p>
+          <p class="mi-desc">Huevos benedictinos con bacon y patatas de boniato o ensalada</p>
+        </div>
+        <span class="mi-price">10,90€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">Bendito Mombú — Salmón</p>
+          <p class="mi-desc">Huevos benedictinos con salmón y patatas de boniato o ensalada</p>
+        </div>
+        <span class="mi-price">11,90€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">El Revuelto <span class="mi-badge mb-new">Sándwich</span></p>
+          <p class="mi-desc">Bacon, cebollino, revuelto, salsa pink y queso crema</p>
+        </div>
+        <span class="mi-price">7,50€</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     BOWLS
+═══════════════════════════════════ -->
+<div id="bowls" class="menu-section ms-bg-beige">
+  <div class="menu-section-inner">
+    <div class="ms-hdr">
+      <div class="ms-hdr-left">
+        <p class="label ms-tag">🥣 Healthy &amp; colorful</p>
+        <h2 class="ms-title">Bowls</h2>
+      </div>
+      <div class="ms-img">
+        <img src="fotos/acai.webp" alt="Açai Bowl MOMBÚ" loading="lazy" />
+      </div>
+    </div>
+    <div class="menu-items">
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">Açai <span class="mi-badge mb-vegan">Vegano</span></p>
+          <p class="mi-desc">Crema de cacahuete, granola y fruta</p>
+        </div>
+        <span class="mi-price">7,90€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">Yogur griego</p>
+          <p class="mi-desc">Crema de cacahuete, granola y fruta</p>
+        </div>
+        <span class="mi-price">5,90€</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     PANCAKES & GOFRES
+═══════════════════════════════════ -->
+<div id="pancakes" class="menu-section ms-bg-cream">
+  <div class="menu-section-inner">
+    <div class="ms-hdr">
+      <div class="ms-hdr-left">
+        <p class="label ms-tag">🥞 Dulce &amp; especial</p>
+        <h2 class="ms-title">French Toast · Pancakes · Gofres</h2>
+      </div>
+    </div>
+    <div class="menu-items">
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">French Toast de Pistacho <span class="mi-badge mb-new">Nuevo</span></p>
+          <p class="mi-desc">Mascarpone de vainilla, crema de pistacho, crujiente de pistacho y frambuesa</p>
+        </div>
+        <span class="mi-price">6,90€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">Pancakes</p>
+          <p class="mi-desc">Especiales cada mes — pregunta por el sabor del día</p>
+        </div>
+        <span class="mi-price">6,50€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">Gofres</p>
+          <p class="mi-desc">Con 1 topping. Especiales con toppings (pistacho, Nutella, Kinder...)</p>
+        </div>
+        <span class="mi-price">5,90€</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     ENSALADAS
+═══════════════════════════════════ -->
+<div id="ensaladas" class="menu-section ms-bg-beige">
+  <div class="menu-section-inner">
+    <div class="ms-hdr">
+      <div class="ms-hdr-left">
+        <p class="label ms-tag">🥗 Frescas &amp; completas</p>
+        <h2 class="ms-title">Ensaladas</h2>
+      </div>
+    </div>
+    <div class="menu-items">
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">The Dream Burrata</p>
+          <p class="mi-desc">Rúcula, pistacho, miel, tomate seco y mortadela</p>
+        </div>
+        <span class="mi-price">11,90€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">Salmón Vibes</p>
+          <p class="mi-desc">Salmón, queso feta, aguacate, rúcula, cebolla morada, salsa de mango y nueces</p>
+        </div>
+        <span class="mi-price">11,50€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left">
+          <p class="mi-name">Chicken Fit</p>
+          <p class="mi-desc">Pollo, arroz, rúcula, pepino, col, frutos secos, cebollino y salsa Mombú</p>
+        </div>
+        <span class="mi-price">10,50€</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     ENTRANTES
+═══════════════════════════════════ -->
+<div id="entrantes" class="menu-section ms-bg-cream">
+  <div class="menu-section-inner">
+    <div class="ms-hdr">
+      <div class="ms-hdr-left">
+        <p class="label ms-tag">🧀 Para compartir</p>
+        <h2 class="ms-title">Entrantes</h2>
+      </div>
+    </div>
+    <div class="menu-items">
+
+      <div class="menu-item">
+        <div class="mi-left"><p class="mi-name">Tequeños</p></div>
+        <span class="mi-price">7,90€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left"><p class="mi-name">Nachos Mombú</p></div>
+        <span class="mi-price">9,90€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left"><p class="mi-name">Patatas de boniato trufadas</p></div>
+        <span class="mi-price">7,50€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left"><p class="mi-name">Patatas pulled pork</p></div>
+        <span class="mi-price">8,90€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left"><p class="mi-name">Pollo crunchy</p></div>
+        <span class="mi-price">7,90€</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     POSTRES
+═══════════════════════════════════ -->
+<div id="postres" class="menu-section ms-bg-beige">
+  <div class="menu-section-inner">
+    <div class="ms-hdr">
+      <div class="ms-hdr-left">
+        <p class="label ms-tag">🍰 El final perfecto</p>
+        <h2 class="ms-title">Postres</h2>
+      </div>
+    </div>
+    <div class="menu-items">
+
+      <div class="menu-item">
+        <div class="mi-left"><p class="mi-name">Tartas de queso</p></div>
+        <span class="mi-price">5,90€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left"><p class="mi-name">Cookies</p></div>
+        <span class="mi-price">3,90€</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="mi-left"><p class="mi-name">Torrija especial</p></div>
+        <span class="mi-price">6,50€</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     BEBIDAS
+═══════════════════════════════════ -->
+<div id="bebidas" class="menu-section ms-bg-cream" style="border-bottom:none;">
+  <div class="menu-section-inner">
+    <div class="ms-hdr">
+      <div class="ms-hdr-left">
+        <p class="label ms-tag">☕ Cafés &amp; más</p>
+        <h2 class="ms-title">Bebidas</h2>
+      </div>
+    </div>
+
+    <p class="label" style="color:var(--muted); margin-bottom:16px; letter-spacing:.08em;">Cafés</p>
+    <div class="drinks-grid" style="margin-bottom:36px;">
+      <div class="drink-item"><span class="drink-name">Espresso</span><span class="drink-price">1,40€</span></div>
+      <div class="drink-item"><span class="drink-name">Cortado</span><span class="drink-price">1,60€</span></div>
+      <div class="drink-item"><span class="drink-name">Latte</span><span class="drink-price">1,80€</span></div>
+      <div class="drink-item"><span class="drink-name">Americano</span><span class="drink-price">1,80€</span></div>
+      <div class="drink-item"><span class="drink-name">Café Bombón</span><span class="drink-price">1,80€</span></div>
+      <div class="drink-item"><span class="drink-name">Capuccino</span><span class="drink-price">2,70€</span></div>
+      <div class="drink-item"><span class="drink-name">Tiramisú Latte</span><span class="drink-price">3,50€</span></div>
+      <div class="drink-item"><span class="drink-name">Matcha</span><span class="drink-price">3,90€</span></div>
+    </div>
+
+    <p class="label" style="color:var(--muted); margin-bottom:16px; letter-spacing:.08em;">Bebidas frías &amp; otras</p>
+    <div class="drinks-grid">
+      <div class="drink-item"><span class="drink-name">Smoothies</span><span class="drink-price">5,00€</span></div>
+      <div class="drink-item"><span class="drink-name">Batidos</span><span class="drink-price">5,50€</span></div>
+      <div class="drink-item"><span class="drink-name">Zumos</span><span class="drink-price">3,00€</span></div>
+      <div class="drink-item"><span class="drink-name">Agua</span><span class="drink-price">2,00€</span></div>
+      <div class="drink-item"><span class="drink-name">Refrescos</span><span class="drink-price">2,60€</span></div>
+      <div class="drink-item"><span class="drink-name">Cerveza</span><span class="drink-price">2,90€</span></div>
+      <div class="drink-item"><span class="drink-name">Copa de vino</span><span class="drink-price">3,90€</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CTA ═══ -->
+<section id="cta">
+  <div class="cta-inner">
+    <span class="cta-badge">✦ Te esperamos</span>
+    <h2 class="display cta-title">¿Te vienes a probarlo?</h2>
+    <p class="cta-desc">Descubre una propuesta de brunch y burgers pensada para disfrutar con calma, sabor y estilo.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/34000000000" target="_blank" rel="noopener" class="btn btn-white">💬 Reservar / WhatsApp</a>
+      <a href="tel:+34000000000" class="btn btn-cta-sec">📞 Llamar ahora</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="ft-logo"><img src="fotos/logo.webp" alt="Logo MOMBÚ" loading="lazy" /></div>
+  <p class="ft-brand">MOMBÚ Brunch &amp; Burger</p>
+  <p class="ft-sub">Torrellano, Elche · Brunch &amp; Burgers</p>
+  <hr class="ft-hr" />
+  <p class="ft-copy">&copy; 2025 MOMBÚ Brunch &amp; Burger · Todos los derechos reservados</p>
+</footer>
+
+<script>
+  // Navbar
+  const btn = document.getElementById('navBtn');
+  const mob = document.getElementById('nav-mob');
+  btn.addEventListener('click', () => {
+    const open = mob.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  function closeMob() { mob.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+  document.addEventListener('click', e => {
+    if (!btn.contains(e.target) && !mob.contains(e.target)) closeMob();
+  });
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', scrollY > 20);
+  }, { passive: true });
+
+  // Active category nav highlight on scroll
+  const catLinks = document.querySelectorAll('.cat-nav-inner a');
+  const sections = [...catLinks].map(a => document.querySelector(a.getAttribute('href')));
+  function updateCat() {
+    const scrollY = window.scrollY + 130;
+    let current = 0;
+    sections.forEach((s, i) => { if (s && s.offsetTop <= scrollY) current = i; });
+    catLinks.forEach((l, i) => l.classList.toggle('active', i === current));
+  }
+  window.addEventListener('scroll', updateCat, { passive: true });
+  updateCat();
+</script>
+</body>
+</html>
