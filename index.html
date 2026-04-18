@@ -112,11 +112,12 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 14px 28px;
+      padding: 13px 30px;
       border-radius: 100px;
       font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       font-weight: 600;
+      letter-spacing: 0.05em;
       border: none;
       cursor: pointer;
       transition: var(--ease);
@@ -126,31 +127,32 @@
     .btn-primary {
       background: var(--terra);
       color: var(--white);
-      box-shadow: 0 4px 20px rgba(196, 112, 74, .35);
+      box-shadow: 0 4px 18px rgba(196, 112, 74, .28);
     }
 
     .btn-primary:hover {
       background: var(--terra-dk);
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(196, 112, 74, .45);
+      box-shadow: 0 8px 26px rgba(196, 112, 74, .38);
     }
 
     .btn-ghost {
       background: transparent;
       color: var(--white);
-      border: 2px solid rgba(255, 255, 255, .65);
+      border: 1.5px solid rgba(255, 255, 255, .55);
       backdrop-filter: blur(8px);
     }
 
     .btn-ghost:hover {
-      background: rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .1);
+      border-color: rgba(255, 255, 255, .75);
       transform: translateY(-2px);
     }
 
     .btn-outline {
       background: transparent;
       color: var(--terra);
-      border: 2px solid var(--terra);
+      border: 1.5px solid var(--terra);
     }
 
     .btn-outline:hover {
@@ -172,7 +174,7 @@
     .btn-white {
       background: var(--white);
       color: var(--terra);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, .18);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, .14);
     }
 
     .btn-white:hover {
@@ -565,10 +567,29 @@
     .feat-right {
       position: relative;
       z-index: 1;
-      font-size: 5rem;
-      line-height: 1;
-      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, .28));
       flex-shrink: 0;
+      width: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feat-right-ornament {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(196, 112, 74, .35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feat-right-ornament::after {
+      content: '';
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(196, 112, 74, .18);
     }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1169,13 +1190,13 @@
         fetchpriority="high" /></div>
     <div class="hero-overlay"></div>
     <div class="hero-body">
-      <span class="hero-badge">✦ Torrellano · Elche · Alicante</span>
+      <span class="hero-badge">Torrellano · Elche · Alicante</span>
       <h1 class="display hero-title">MOMBÚ</h1>
       <p class="hero-sub">Brunch &amp; Burgers en Torrellano</p>
-      <p class="hero-desc">Smash burgers, brunch y café de especialidad en un espacio acogedor y con estilo.</p>
+      <p class="hero-desc">Smash burgers artesanales, brunch de calidad y café de especialidad en un espacio pensado para estar a gusto.</p>
       <div class="hero-btns">
-        <a href="carta.html" class="btn btn-primary">🍔 Ver carta completa</a>
-        <a href="#ubicacion" class="btn btn-ghost">📍 Cómo llegar</a>
+        <a href="carta.html" class="btn btn-primary">Ver la carta</a>
+        <a href="#ubicacion" class="btn btn-ghost">Cómo llegar</a>
       </div>
     </div>
 
@@ -1185,14 +1206,14 @@
   <section id="menu-dia">
     <div class="feat-card">
       <div class="feat-left">
-        <span class="feat-tag">✦ Oferta especial</span>
+        <span class="feat-tag">Oferta especial</span>
         <h2 class="feat-title">Menú de mediodía</h2>
         <p class="feat-price">14,90<span style="font-size:1.5rem">€</span></p>
-        <p class="feat-desc">Burger + patatas + bebida incluidos.</p>
+        <p class="feat-desc">Burger + patatas + bebida. Todo incluido.</p>
         <p class="feat-note">Disponible entre semana al mediodía.</p>
-        <a href="carta.html" class="btn btn-primary" style="margin-top:26px;">Ver carta completa</a>
+        <a href="carta.html" class="btn btn-primary" style="margin-top:26px;">Ver la carta</a>
       </div>
-      <div class="feat-right">🍔</div>
+      <div class="feat-right"><div class="feat-right-ornament"></div></div>
     </div>
   </section>
 
@@ -1200,16 +1221,16 @@
   <section id="top3" class="sec">
     <div class="wrap">
       <div class="sh center">
-        <p class="label sh-tag">✦ Lo más pedido</p>
+        <p class="label sh-tag">Lo más pedido</p>
         <h2 class="heading sh-title">Nuestros favoritos</h2>
-        <p class="sh-sub">Elaborados con ingredientes frescos y mucho amor por el detalle.</p>
+        <p class="sh-sub">Elaborados con ingredientes frescos y cuidado en cada detalle.</p>
       </div>
       <div class="cards-grid">
 
         <article class="card">
           <div class="card-img"><img src="fotos/burgerrosa.webp" alt="Mombu Vibes burger" loading="lazy" /></div>
           <div class="card-body">
-            <p class="label card-cat">🍔 Smash Burger</p>
+            <p class="label card-cat">Smash Burger</p>
             <h3 class="card-name">Mombu Vibes</h3>
             <p class="card-desc">Doble smash, smoked cheddar, bacon, cebolla caramelizada y salsa pink.</p>
             <div class="card-foot">
@@ -1222,7 +1243,7 @@
         <article class="card">
           <div class="card-img"><img src="fotos/bebida2.webp" alt="French Toast Pistacho" loading="lazy" /></div>
           <div class="card-body">
-            <p class="label card-cat">🥞 Brunch</p>
+            <p class="label card-cat">Brunch</p>
             <h3 class="card-name">French Toast Pistacho</h3>
             <p class="card-desc">Mascarpone de vainilla, crema de pistacho, crujiente de pistacho y frambuesa.</p>
             <div class="card-foot">
@@ -1235,7 +1256,7 @@
         <article class="card">
           <div class="card-img"><img src="fotos/acai.webp" alt="Açai Bowl" loading="lazy" /></div>
           <div class="card-body">
-            <p class="label card-cat">🥣 Bowl</p>
+            <p class="label card-cat">Bowl</p>
             <h3 class="card-name">Açai Bowl</h3>
             <p class="card-desc">Crema de cacahuete, granola artesanal y fruta de temporada.</p>
             <div class="card-foot">
@@ -1247,7 +1268,7 @@
 
       </div>
       <div style="text-align:center; margin-top:44px;">
-        <a href="carta.html" class="btn btn-outline">Ver carta completa →</a>
+        <a href="carta.html" class="btn btn-outline">Ver la carta completa</a>
       </div>
     </div>
   </section>
@@ -1256,9 +1277,9 @@
   <section id="galeria" class="sec" style="background:var(--beige);">
     <div class="wrap">
       <div class="sh center">
-        <p class="label sh-tag">✦ Nuestro espacio</p>
+        <p class="label sh-tag">Nuestro espacio</p>
         <h2 class="heading sh-title">Galería</h2>
-        <p class="sh-sub">Un lugar pensado para disfrutar con calma, sabor y estilo.</p>
+        <p class="sh-sub">Un rincón diseñado para disfrutar con calma y buen gusto.</p>
       </div>
       <div class="gal-grid">
         <div class="gal-item"><img src="fotos/hamburguesa3.webp" alt="Smash burger MOMBÚ" loading="lazy" /></div>
@@ -1282,10 +1303,10 @@
         </div>
       </div>
       <div class="qr-text">
-        <p class="label qr-tag">✦ Acceso rápido</p>
+        <p class="label qr-tag">Acceso rápido</p>
         <h2 class="heading qr-title">Menú digital</h2>
-        <p class="qr-desc">Escanea el QR o consulta la carta online cómodamente.</p>
-        <a href="carta.html" class="btn btn-primary">Ver carta completa →</a>
+        <p class="qr-desc">Escanea el código QR desde tu mesa o consulta la carta online en cualquier momento.</p>
+        <a href="carta.html" class="btn btn-primary">Ver la carta</a>
       </div>
     </div>
   </section>
@@ -1294,13 +1315,13 @@
   <section id="horario" class="sec">
     <div class="wrap">
       <div class="sh center" style="margin-bottom:40px;">
-        <p class="label sh-tag">✦ Cuándo encontrarnos</p>
+        <p class="label sh-tag">Cuándo encontrarnos</p>
         <h2 class="heading sh-title">Horario</h2>
       </div>
       <div class="hours-wrap">
         <div class="hours-hdr">
           <p class="label hours-hdr-tag">Horario de apertura</p>
-          <p class="hours-hdr-title">☕ MOMBÚ Brunch &amp; Burger</p>
+          <p class="hours-hdr-title">MOMBÚ Brunch &amp; Burger</p>
         </div>
         <div>
           <div class="hours-row" data-day="Lunes"> <span class="hours-day">Lunes</span> <span class="hours-time">8:30 –
@@ -1326,7 +1347,7 @@
   <section id="ubicacion" class="sec" style="background:var(--beige);">
     <div class="wrap">
       <div class="sh center" style="margin-bottom:48px;">
-        <p class="label sh-tag">✦ Encuéntranos</p>
+        <p class="label sh-tag">Encuéntranos</p>
         <h2 class="heading sh-title">Ubicación</h2>
       </div>
       <div class="loc-grid">
@@ -1336,13 +1357,13 @@
             allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <div>
-          <p class="label sh-tag" style="margin-bottom:12px;">📍 Dirección</p>
+          <p class="label sh-tag" style="margin-bottom:12px;">Dirección</p>
           <p class="loc-addr">Av. Illice 102,<br />Torrellano, Elche</p>
           <p class="loc-city">Alicante, España</p>
           <div class="loc-btns">
             <a href="https://www.google.com/maps/search/Av.+Illice+102+Torrellano+Elche" target="_blank" rel="noopener"
-              class="btn btn-primary">🗺️ Abrir en Google Maps</a>
-            <a href="tel:+34000000000" class="btn btn-outline">📞 Llamar</a>
+              class="btn btn-primary">Abrir en Google Maps</a>
+            <a href="tel:+34000000000" class="btn btn-outline">Llamar</a>
           </div>
         </div>
       </div>
@@ -1352,14 +1373,13 @@
   <!-- ═══ CTA ═══ -->
   <section id="cta">
     <div class="cta-inner">
-      <span class="cta-badge">✦ Te esperamos</span>
-      <h2 class="display cta-title">¿Te vienes a probarlo?</h2>
-      <p class="cta-desc">Descubre una propuesta de brunch y burgers pensada para disfrutar con calma, sabor y estilo.
+      <span class="cta-badge">Te esperamos</span>
+      <h2 class="display cta-title">Ven a disfrutarlo</h2>
+      <p class="cta-desc">Una propuesta de brunch y burgers pensada para los que aprecian el sabor, el detalle y el buen ambiente.
       </p>
       <div class="cta-btns">
-        <a href="https://wa.me/34000000000" target="_blank" rel="noopener" class="btn btn-white">💬 Reservar /
-          WhatsApp</a>
-        <a href="tel:+34000000000" class="btn btn-cta-sec">📞 Llamar ahora</a>
+        <a href="https://wa.me/34000000000" target="_blank" rel="noopener" class="btn btn-white">Reservar por WhatsApp</a>
+        <a href="tel:+34000000000" class="btn btn-cta-sec">Llamar</a>
       </div>
     </div>
   </section>
